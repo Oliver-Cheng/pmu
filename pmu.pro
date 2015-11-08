@@ -18,6 +18,9 @@ SOURCES += main.cpp\
 
 HEADERS  += pmuIHM/pmuEnterPage.h
 
+RESOURCES += \
+    imageresources.qrc
+
 CONFIG += mobility
 MOBILITY = 
 

@@ -86,28 +86,35 @@ void pmuEnterPage::constructIHM(){
                                            "QLineEdit:focus{border-style:outset; border-width:0px; border-radius: 0px; border-color: rgb(41, 237, 215); color:rgb(0, 0, 0); background-color: azure; } ");
 
     this->searchingButton = new QPushButton();
+    this->searchingButton->setIcon(QIcon(":/images/searchButton.png"));
     this->searchingButton->setFixedSize(width*0.092,height*0.053);
     this->searchingButton->setIconSize(QSize(width*0.092,height*0.053));
-    searchingButton->setStyleSheet("QPushButton{border-image: url(:/images/searchButton0.png); background-color:transparent;border: 0px solid Gray; border-radius: 0px;}"
-                                   "QPushButton:pressed{border-image: url(:/images/searchButton2.png);}");
+    /*this->searchingButton->setStyleSheet("QPushButton{border-image: url(:/images/searchButton0.png); background-color:transparent;border: 0px solid Gray; border-radius: 0px;}"
+                                   "QPushButton:pressed{border-image: url(:/images/searchButton2.png);}");*/
 
     this->optionCombox = new QComboBox();
-    this->optionCombox->setStyleSheet("QComboBox { border: 0px solid gray; border-radius: 3px; padding: 1px 1px 1px 3px; min-width: 3em; background-color: transparent; color: gainsboro}"
-                                      "QComboBox:editable { background: white; }"
-                                      "QComboBox:!editable, QComboBox::drop-down:editable { background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3); } /* QComboBox gets the on state when the popup is open */ "
-                                      "QComboBox:!editable:on, QComboBox::drop-down:editable:on { background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 0.4 #D8D8D8, stop: 0.5 #DDDDDD, stop: 1.0 #E1E1E1);  }"
-                                      "QComboBox:on { /* shift the text when the popup opens */ padding-top: 0px; padding-left: 0px;  }"
-                                      "QComboBox::drop-down {  subcontrol-origin: padding;  subcontrol-position: top right;width: 15px;border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; /* just a single line */ border-top-right-radius: 3px; /* same radius as the QComboBox */border-bottom-right-radius: 3px; } "
-                                      "QComboBox::down-arrow {image: url(/usr/share/icons/crystalsvg/16x16/actions/1downarrow.png); }QComboBox::down-arrow:on { /* shift the arrow when popup is open */ top: 1px;left: 1px;}");
-
-    this->optionCombox->setFixedSize(width*0.2, height*0.053);
+    this->optionCombox->setFixedSize(width*0.15, height*0.053);
     this->optionCombox->addItem("語言");
     this->optionCombox->addItem("音樂");
     this->optionCombox->addItem("舞蹈");
+    this->optionCombox->setStyleSheet( "QComboBox{color:gray;background-color:cyan;border:1px solid black;border-radius:5px;padding:1px;}"
+                                      // "QComboBox{color:white;background-color: qlineargradient(x1:0, y1:0, x2:1,y2:1, stop: 1 rgba(228, 41, 81, 100), stop: 0 rgba(234, 107, 101, 100));border-color: rgba(255,255,255,200);border-width: 1px;border-style: solid; }"
+                                       "QComboBox QListView{ border-style: none; background-color: qlineargradient(x1:0, y1:0, x2:1,y2:0, stop: 1 rgba(228, 41, 81, 100), stop: 0 rgba(234, 107, 101, 100));}"
+                                       "QComboBox::drop-down{width: 20px;border: 1px;border-color:white;border-left-style:solid;border-top-style: none;border-bottom-style: none;border-right-style: none;}"
+                                       "QComboBox::down-arrow{image: url(:/images/triangle.png);width: 180px; height: 180px;}");
 
+//    this->optionCombox->setStyleSheet("QComboBox:editable { background-color: pink; }"
+//                                      "QComboBox:!editable"
+//                                      "QComboBox::drop-down:editable { background-color : transparent } /* QComboBox gets the on state when the popup is open */ "
+//                                      "QComboBox:!editable:on"
+//                                      "QComboBox::drop-down:editable:on { background-color : transparent  }"
+//                                      "QComboBox:on { /* shift the text when the popup opens */ padding-top: 0px; padding-left: 0px;  }"
+//                                      "QComboBox::drop-down {  subcontrol-origin: padding;  subcontrol-position: top right;width: 15px;border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; /* just a single line */ border-top-right-radius: 3px; /* same radius as the QComboBox */border-bottom-right-radius: 3px; } "
+//                                      "QComboBox::down-arrow { image: url(:/images/triangle.png); width : 10px; height : 10px; }"
+//                                      "QComboBox::down-arrow:on { top: 0px;left: 0px;}");
     this->searchingBar = new QFrame();
     this->searchingBar->setStyleSheet("background-color:transparent; color:AliceBlue; border: 1px solid aliceblue; ");
-    this->searchingBar->setFixedSize(width*0.75, height*0.053);
+    this->searchingBar->setFixedHeight(height*0.053);
     this->searchingBarLayout = new QHBoxLayout(this->searchingBar);
     this->searchingBarLayout->addWidget(this->searchingLineEdit);
     this->searchingBarLayout->addWidget(this->searchingButton);
