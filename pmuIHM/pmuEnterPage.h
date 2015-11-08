@@ -18,6 +18,8 @@
 #include <QFont>
 #include <QComboBox>
 
+#include "pmuMainPage.h"
+
 
 class pmuEnterPage : public QWidget
 {
@@ -31,7 +33,9 @@ public:
     void drawBackground();
     void setConnections();
     void display();
+
 private:
+    pmuMainPage * mainPage;
     QScreen *screen;
     QPixmap* pixmap;
     QFont *caracterStyle;

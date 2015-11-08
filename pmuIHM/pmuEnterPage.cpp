@@ -7,7 +7,6 @@ pmuEnterPage::pmuEnterPage(QWidget *parent)
     this->constructIHM();
     this->setConnections();
     this->setStyleSheet("background-color:rgb(135,209,199)");
-    //this->drawBackground();
 }
 
 pmuEnterPage::~pmuEnterPage()
@@ -24,6 +23,7 @@ void pmuEnterPage::initVariable(){
     this->height = screen->availableSize().height();
     this->width = screen->availableSize().width();
     this->caracterStyle = new QFont("Segoe UI", 15, QFont::AnyStyle, false);
+    mainPage = new pmuMainPage();
 }
 
 //!-----------------------------------------------------------------------------------------
@@ -176,5 +176,5 @@ void pmuEnterPage::drawBackground(){
 //! \brief Widget::signInHomePage
 //!
 void pmuEnterPage::signInHomePage(){
-
+    mainPage->show();
 }
