@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>images/searchButton.png</file>
         <file>images/triangle.png</file>
+        <file>images/down.png</file>
+        <file>images/searchButton1.png</file>
+        <file>images/lala.png</file>
     </qresource>
 </RCC>

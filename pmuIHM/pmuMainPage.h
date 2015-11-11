@@ -21,6 +21,7 @@
 #include <QDesktopWidget>
 #include <QListView>
 
+#include "LanguageWidget.h"
 #include "HottipsWidget.h"
 #include "PrivilegeWidget.h"
 #include "InstitutionWidget.h"
@@ -28,23 +29,23 @@
 #include <QStandardItemModel>
 #include <QStandardItem>
 
-class pmuMainPage : public QWidget
+class PmuMainPage : public QWidget
 {
     Q_OBJECT
 public:
-    explicit pmuMainPage(QWidget *parent = 0);
-    ~pmuMainPage();
+    explicit PmuMainPage(int width, int height);
+    ~PmuMainPage();
 
     void initial();
     void constructMainWidget();
-
+    void setConnections();
 private:
+    LanguageWidget *languageWidget;
+
     QPixmap* pixmap;
     QVBoxLayout* mainLayout;
     QHBoxLayout* listWidgetLayout;
     QPalette palette;
-    QScreen *screen;
-
 
     QFrame *titleBar;
     QHBoxLayout *searchingBarLayout;
@@ -53,10 +54,8 @@ private:
     QPushButton *searchingButton;
     QPushButton* somethingElseButton1;
 
-
     QListView* optionListWidget;
     QTabWidget* choosenTableWidget;
-    QWidget* personnalWidget;
     QComboBox* citySwitchComoBox;
     QLabel* cityLabel;
 
@@ -71,23 +70,14 @@ private:
     QStandardItem* middleschoolItem;
     QStandardItem* primaryschoolItem;
 
-    QPushButton* homepagePushBtn;
-    QPushButton* nearByPushBtn;
-    QPushButton* essentialOptionPushBtn;
-    QPushButton* privateHomePushBtn;
-    QHBoxLayout *personnalBarLayout;
-
     HottipsWidget* hottipsWidget;
     PrivilegeWidget* privilegeWidget;
     InstitutionWidget* institutionWidget;
     GuessULikeWidget* guessULikeWidget;
 
-
     QWidget* optionsWidget;
 
-
     QStandardItemModel* model;
-
 
     int width;
     int height;
@@ -96,6 +86,7 @@ private:
 signals:
 
 public slots:
+
 };
 
 #endif // PMUMAINPAGE_H

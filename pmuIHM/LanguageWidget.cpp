@@ -1,0 +1,344 @@
+#include "LanguageWidget.h"
+#include <QDebug>
+
+LanguageWidget::LanguageWidget(QWidget *parent): QWidget(parent){
+    this->initial();
+    this->constructIHM();
+    this->setConnections();
+    this->setStyleSheet("background-color:rgb(135,209,199)");
+    // this->drawBackground();
+}
+
+LanguageWidget::~LanguageWidget(){
+
+}
+
+void LanguageWidget::initial(){
+    this->screen = QApplication::screens().at(0);
+    this->height = screen->availableSize().height();
+    this->width = screen->availableSize().width();
+    this->caracterStyle = new QFont("Segoe UI" , 18, QFont::Normal, false);
+    this->buttonHeight = 0.5 * 0.25 * 0.8 * height;
+    this->buttonWidth = 0.33 * 0.7 * width;
+    this->searchPage = new SearchWidget();
+    qDebug()<<"height = "<<this->height<<"width = "<<this->width;
+}
+
+void LanguageWidget::constructIHM(){
+    //! create tile bar area
+    tileBar = new QFrame();
+    tileBar->setFixedHeight(0.08 * height);
+//    tileBar->setStyleSheet("background-color:red;border: 0px;");
+
+    tileBarReturnButton = new QPushButton("＜");
+    tileBarReturnButton->setFont(QFont("Segoe UI" , 25, QFont::Normal, false));
+    tileBarReturnButton->setFixedSize(0.1 * width,0.08 * height);
+    tileBarReturnButton->setStyleSheet("background-color:transparent;border: 0px;");
+
+    tileBarLabel = new QLabel("語言");
+    tileBarLabel->setFont(QFont("Segoe UI" , 25, QFont::Normal, false));
+    tileBarLabel->setAlignment(Qt::AlignCenter);
+    tileBarLabel->setStyleSheet("background-color:transparent;border: 0px");
+
+    tileBarSearchButton = new QPushButton();
+    tileBarSearchButton->setFixedSize(0.1 * width,0.08 * height);
+    tileBarSearchButton->setIcon(QIcon(":/images/searchButton0.png"));
+    tileBarSearchButton->setIconSize(QSize(50,0.08 * height));
+    tileBarSearchButton->setStyleSheet("background-color:transparent;border: 0px;");
+
+    tileBarLayout = new QHBoxLayout(tileBar);
+    tileBarLayout->addWidget(tileBarReturnButton);
+    tileBarLayout->addWidget(tileBarLabel);
+    tileBarLayout->addWidget(tileBarSearchButton);
+    tileBarLayout->setSpacing(0);
+    tileBarLayout->setMargin(0);
+
+
+    //! first window chinese
+    chineseLabel = new QLabel("中文");
+    chineseLabel->setFont(QFont("Segoe UI" , 40, QFont::Normal, false));
+    chineseLabel->setAlignment(Qt::AlignCenter);
+    chineseLabel->setStyleSheet("background-color:yellow;border: 0px;");
+    chineseLabel->setFixedWidth(0.3 * width);
+
+    chineseGridButtonone = new QPushButton("杜月1");
+    chineseGridButtonone->setStyleSheet("background-color:yellow;border: 0px;");
+    chineseGridButtonone->setFont(*caracterStyle);
+    chineseGridButtonone->setFixedSize(buttonWidth,buttonHeight);
+    chineseGridButtontwo = new QPushButton("杜月2");
+    chineseGridButtontwo->setStyleSheet("background-color:yellow;border: 0px;");
+    chineseGridButtontwo->setFont(*caracterStyle);
+    chineseGridButtontwo->setFixedSize(buttonWidth,buttonHeight);
+    chineseGridButtonthree = new QPushButton("杜月3");
+    chineseGridButtonthree->setStyleSheet("background-color:yellow;border: 0px;");
+    chineseGridButtonthree->setFont(*caracterStyle);
+    chineseGridButtonthree->setFixedSize(buttonWidth,buttonHeight);
+    chineseGridButtonfour = new QPushButton("杜月4");
+    chineseGridButtonfour->setStyleSheet("background-color:yellow;border: 0px;");
+    chineseGridButtonfour->setFont(*caracterStyle);
+    chineseGridButtonfour->setFixedSize(buttonWidth,buttonHeight);
+    chineseGridButtonfive = new QPushButton("杜月5");
+    chineseGridButtonfive->setStyleSheet("background-color:yellow;border: 0px;");
+    chineseGridButtonfive->setFont(*caracterStyle);
+    chineseGridButtonfive->setFixedSize(buttonWidth,buttonHeight);
+    chineseGridButtonsix = new QPushButton("更多");
+    chineseGridButtonsix->setStyleSheet("background-color:yellow;border: 0px;");
+    chineseGridButtonsix->setFont(*caracterStyle);
+    chineseGridButtonsix->setFixedSize(buttonWidth,buttonHeight);
+
+    contentInfoChWidget = new QWidget();
+    contentInfoChWidget->setFixedWidth(0.7 * width);
+    contentInfoChWidget->setStyleSheet("background-color:transparent;border: 0px;");
+
+    chineseGridLayout = new QGridLayout(contentInfoChWidget);
+    chineseGridLayout->addWidget(chineseGridButtonone,0,0);
+    chineseGridLayout->addWidget(chineseGridButtontwo,0,1);
+    chineseGridLayout->addWidget(chineseGridButtonthree,0,2);
+    chineseGridLayout->addWidget(chineseGridButtonfour,1,0);
+    chineseGridLayout->addWidget(chineseGridButtonfive,1,1);
+    chineseGridLayout->addWidget(chineseGridButtonsix,1,2);
+    chineseGridLayout->setSpacing(10);
+    chineseGridLayout->setMargin(0);
+
+    contentChineseWidget = new QWidget();
+    contentChineseWidget->setFixedHeight(0.24 * 0.8 *height);
+    contentChineseWidget->setStyleSheet("background-color:transparent");
+
+    chineseWidgetLayout = new QHBoxLayout(contentChineseWidget);
+    chineseWidgetLayout->addWidget(chineseLabel);
+    chineseWidgetLayout->addWidget(contentInfoChWidget);
+    chineseWidgetLayout->setSpacing(5);
+    chineseWidgetLayout->setMargin(0);
+
+    //!second window english
+    englishLabel = new QLabel("英語");
+    englishLabel->setFont(QFont("Segoe UI" , 40, QFont::Normal, false));
+    englishLabel->setAlignment(Qt::AlignCenter);
+    englishLabel->setStyleSheet("background-color:yellow;border: 0px;");
+    englishLabel->setFixedWidth(0.3 * width);
+
+    englishGridButtonone = new QPushButton("杜月1");
+    englishGridButtonone->setStyleSheet("background-color:yellow;border: 0px;");
+    englishGridButtonone->setFont(*caracterStyle);
+    englishGridButtonone->setFixedSize(buttonWidth,buttonHeight);
+    englishGridButtontwo = new QPushButton("杜月2");
+    englishGridButtontwo->setStyleSheet("background-color:yellow;border: 0px;");
+    englishGridButtontwo->setFont(*caracterStyle);
+    englishGridButtontwo->setFixedSize(buttonWidth,buttonHeight);
+    englishGridButtonthree = new QPushButton("杜月3");
+    englishGridButtonthree->setStyleSheet("background-color:yellow;border: 0px;");
+    englishGridButtonthree->setFont(*caracterStyle);
+    englishGridButtonthree->setFixedSize(buttonWidth,buttonHeight);
+    englishGridButtonfour = new QPushButton("杜月4");
+    englishGridButtonfour->setStyleSheet("background-color:yellow;border: 0px;");
+    englishGridButtonfour->setFont(*caracterStyle);
+    englishGridButtonfour->setFixedSize(buttonWidth,buttonHeight);
+    englishGridButtonfive = new QPushButton("杜月5");
+    englishGridButtonfive->setStyleSheet("background-color:yellow;border: 0px;");
+    englishGridButtonfive->setFont(*caracterStyle);
+    englishGridButtonfive->setFixedSize(buttonWidth,buttonHeight);
+    englishGridButtonsix = new QPushButton("更多");
+    englishGridButtonsix->setStyleSheet("background-color:yellow;border: 0px;");
+    englishGridButtonsix->setFont(*caracterStyle);
+    englishGridButtonsix->setFixedSize(buttonWidth,buttonHeight);
+
+    contentInfoEnWidget = new QWidget();
+    contentInfoEnWidget->setFixedWidth(0.7 * width);
+    contentInfoEnWidget->setStyleSheet("background-color:transparent;");
+
+    englishGridLayout = new QGridLayout(contentInfoEnWidget);
+    englishGridLayout->addWidget(englishGridButtonone,0,0);
+    englishGridLayout->addWidget(englishGridButtontwo,0,1);
+    englishGridLayout->addWidget(englishGridButtonthree,0,2);
+    englishGridLayout->addWidget(englishGridButtonfour,1,0);
+    englishGridLayout->addWidget(englishGridButtonfive,1,1);
+    englishGridLayout->addWidget(englishGridButtonsix,1,2);
+    englishGridLayout->setSpacing(10);
+    englishGridLayout->setMargin(0);
+
+    contentEnglishWidget = new QWidget();
+    contentEnglishWidget->setFixedHeight(0.24 * 0.8 * height);
+    contentEnglishWidget->setStyleSheet("background-color:transparent");
+
+    englishWidgetLayout = new QHBoxLayout(contentEnglishWidget);
+    englishWidgetLayout->addWidget(englishLabel);
+    englishWidgetLayout->addWidget(contentInfoEnWidget);
+    englishWidgetLayout->setSpacing(5);
+    englishWidgetLayout->setMargin(0);
+
+    //!thrid french window
+    frenchLabel = new QLabel("法語");
+    frenchLabel->setFont(QFont("Segoe UI" , 40, QFont::Normal, false));
+    frenchLabel->setAlignment(Qt::AlignCenter);
+    frenchLabel->setStyleSheet("background-color:yellow;border: 0px;");
+    frenchLabel->setFixedWidth(0.3 * width);
+
+    frenchGridButtonone = new QPushButton("杜月1");
+    frenchGridButtonone->setStyleSheet("background-color:yellow;border: 0px;");
+    frenchGridButtonone->setFont(*caracterStyle);
+    frenchGridButtonone->setFixedSize(buttonWidth,buttonHeight);
+    frenchGridButtontwo = new QPushButton("杜月2");
+    frenchGridButtontwo->setStyleSheet("background-color:yellow;border: 0px;");
+    frenchGridButtontwo->setFont(*caracterStyle);
+    frenchGridButtontwo->setFixedSize(buttonWidth,buttonHeight);
+    frenchGridButtonthree = new QPushButton("杜月3");
+    frenchGridButtonthree->setStyleSheet("background-color:yellow;border: 0px;");
+    frenchGridButtonthree->setFont(*caracterStyle);
+    frenchGridButtonthree->setFixedSize(buttonWidth,buttonHeight);
+    frenchGridButtonfour = new QPushButton("杜月4");
+    frenchGridButtonfour->setStyleSheet("background-color:yellow;border: 0px;");
+    frenchGridButtonfour->setFont(*caracterStyle);
+    frenchGridButtonfour->setFixedSize(buttonWidth,buttonHeight);
+    frenchGridButtonfive = new QPushButton("杜月5");
+    frenchGridButtonfive->setStyleSheet("background-color:yellow;border: 0px;");
+    frenchGridButtonfive->setFont(*caracterStyle);
+    frenchGridButtonfive->setFixedSize(buttonWidth,buttonHeight);
+    frenchGridButtonsix = new QPushButton("更多");
+    frenchGridButtonsix->setStyleSheet("background-color:yellow;border: 0px;");
+    frenchGridButtonsix->setFont(*caracterStyle);
+    frenchGridButtonsix->setFixedSize(buttonWidth,buttonHeight);
+
+    contentInfoFrWidget = new QWidget();
+    contentInfoFrWidget->setFixedWidth(0.7 * width);
+    contentInfoFrWidget->setStyleSheet("background-color:transparent;");
+
+    frenchGridLayout = new QGridLayout(contentInfoFrWidget);
+    frenchGridLayout->addWidget(frenchGridButtonone,0,0);
+    frenchGridLayout->addWidget(frenchGridButtontwo,0,1);
+    frenchGridLayout->addWidget(frenchGridButtonthree,0,2);
+    frenchGridLayout->addWidget(frenchGridButtonfour,1,0);
+    frenchGridLayout->addWidget(frenchGridButtonfive,1,1);
+    frenchGridLayout->addWidget(frenchGridButtonsix,1,2);
+    frenchGridLayout->setSpacing(10);
+    frenchGridLayout->setMargin(0);
+
+    contentFrenchWidget = new QWidget();
+    contentFrenchWidget->setFixedHeight(0.24 * 0.8 * height);
+    contentFrenchWidget->setStyleSheet("background-color:transparent");
+
+    frenchWidgetLayout = new QHBoxLayout(contentFrenchWidget);
+    frenchWidgetLayout->addWidget(frenchLabel);
+    frenchWidgetLayout->addWidget(contentInfoFrWidget);
+    frenchWidgetLayout->setSpacing(5);
+    frenchWidgetLayout->setMargin(0);
+
+
+    //!forth deutsch window
+    deutchLabel = new QLabel("德語");
+    deutchLabel->setFont(QFont("Segoe UI" , 40, QFont::Normal, false));
+    deutchLabel->setAlignment(Qt::AlignCenter);
+    deutchLabel->setStyleSheet("background-color:yellow;border: 0px;");
+    deutchLabel->setFixedWidth(0.3 * width);
+
+    deutschGridButtonone = new QPushButton("杜月1");
+    deutschGridButtonone->setStyleSheet("background-color:yellow;border: 0px;");
+    deutschGridButtonone->setFont(*caracterStyle);
+    deutschGridButtonone->setFixedSize(buttonWidth,buttonHeight);
+    deutschGridButtontwo = new QPushButton("杜月2");
+    deutschGridButtontwo->setStyleSheet("background-color:yellow;border: 0px;");
+    deutschGridButtontwo->setFont(*caracterStyle);
+    deutschGridButtontwo->setFixedSize(buttonWidth,buttonHeight);
+    deutschGridButtonthree = new QPushButton("杜月3");
+    deutschGridButtonthree->setStyleSheet("background-color:yellow;border: 0px;");
+    deutschGridButtonthree->setFont(*caracterStyle);
+    deutschGridButtonthree->setFixedSize(buttonWidth,buttonHeight);
+    deutschGridButtonfour = new QPushButton("杜月4");
+    deutschGridButtonfour->setStyleSheet("background-color:yellow;border: 0px;");
+    deutschGridButtonfour->setFont(*caracterStyle);
+    deutschGridButtonfour->setFixedSize(buttonWidth,buttonHeight);
+    deutschGridButtonfive = new QPushButton("杜月5");
+    deutschGridButtonfive->setStyleSheet("background-color:yellow;border: 0px;");
+    deutschGridButtonfive->setFont(*caracterStyle);
+    deutschGridButtonfive->setFixedSize(buttonWidth,buttonHeight);
+    deutschGridButtonsix = new QPushButton("更多");
+    deutschGridButtonsix->setStyleSheet("background-color:yellow;border: 0px;");
+    deutschGridButtonsix->setFont(*caracterStyle);
+    deutschGridButtonsix->setFixedSize(buttonWidth,buttonHeight);
+
+    contentInfoGeWidget = new QWidget();
+    contentInfoGeWidget->setFixedWidth(0.7 * width);
+    contentInfoGeWidget->setStyleSheet("background-color:transparent;");
+
+    deutschGridLayout = new QGridLayout(contentInfoGeWidget);
+    deutschGridLayout->addWidget(deutschGridButtonone,0,0);
+    deutschGridLayout->addWidget(deutschGridButtontwo,0,1);
+    deutschGridLayout->addWidget(deutschGridButtonthree,0,2);
+    deutschGridLayout->addWidget(deutschGridButtonfour,1,0);
+    deutschGridLayout->addWidget(deutschGridButtonfive,1,1);
+    deutschGridLayout->addWidget(deutschGridButtonsix,1,2);
+    deutschGridLayout->setSpacing(10);
+    deutschGridLayout->setMargin(0);
+
+    contentDeutschWidget = new QWidget();
+    contentDeutschWidget->setFixedHeight(0.24 * 0.8 * height);
+    contentDeutschWidget->setStyleSheet("background-color:transparent");
+
+    deutschWidgetLayout = new QHBoxLayout(contentDeutschWidget);
+    deutschWidgetLayout->addWidget(deutchLabel);
+    deutschWidgetLayout->addWidget(contentInfoGeWidget);
+    deutschWidgetLayout->setSpacing(5);
+    deutschWidgetLayout->setMargin(0);
+    //!
+    contentJapaneseWidget = new QWidget();
+    contentJapaneseWidget->setStyleSheet("background-color:yellow");
+    contentJapaneseWidget->setFixedHeight(0.3 * 0.8 * height);
+    //!
+    contentKoreanWidget = new QWidget();
+    contentKoreanWidget->setStyleSheet("background-color:yellow");
+    contentKoreanWidget->setFixedHeight(0.3 * 0.8  * height);
+
+    //!create content bar area
+    contentWidget = new QScrollArea();
+    contentWidget->setFixedHeight(0.8 * height);
+
+    contentWidgetLayout = new QVBoxLayout(contentWidget);
+    contentWidgetLayout->addWidget(contentChineseWidget);
+    contentWidgetLayout->addWidget(contentEnglishWidget);
+    contentWidgetLayout->addWidget(contentFrenchWidget);
+    contentWidgetLayout->addWidget(contentDeutschWidget);
+//    contentWidgetLayout->addWidget(contentJapaneseWidget);
+//    contentWidgetLayout->addWidget(contentKoreanWidget);
+    contentWidgetLayout->setSpacing(5);
+    contentWidgetLayout->setMargin(0);
+
+//    contentWidgetScrollArea = new QScrollArea();
+//    contentWidgetScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+//    contentWidgetScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    contentWidgetScrollArea->setStyleSheet("background-color:transparent");
+//    contentWidgetScrollArea->setAutoFillBackground(true);
+//    contentWidgetScrollArea->setBackgroundRole(QPalette::Dark);
+//    contentWidgetScrollArea->setWidget(contentWidget);
+
+
+
+    //! advertisement area
+    adsWidget = new QWidget();
+    adsWidget->setStyleSheet("background-color:aliceblue;border: 0px");
+    adsWidget->setFixedHeight(0.12 * height);
+
+    mainWidgetLayout = new QVBoxLayout(this);
+    mainWidgetLayout->addWidget(tileBar);
+    mainWidgetLayout->addWidget(contentWidget);
+    mainWidgetLayout->addWidget(adsWidget);
+    mainWidgetLayout->setSpacing(5);
+    mainWidgetLayout->setMargin(0);
+
+}
+
+void LanguageWidget::drawBackground(){
+    pixmap = new QPixmap(":/images/backgroundp.png");
+    QPalette p = this->palette();
+    p.setBrush(QPalette::Background, QBrush(pixmap->scaled(QSize(width, height), Qt::IgnoreAspectRatio, Qt::SmoothTransformation)));
+    this->setPalette(p);
+    this->setMask(pixmap->mask());
+}
+
+void LanguageWidget::setConnections(){
+    this->connect(tileBarSearchButton, SIGNAL(clicked()), this, SLOT(signSearchPage()));
+    this->connect(tileBarReturnButton, SIGNAL(clicked()), this, SLOT(close( )));
+}
+
+void LanguageWidget::signSearchPage(){
+
+    searchPage->show();
+}

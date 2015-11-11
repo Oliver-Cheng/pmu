@@ -1,10 +1,10 @@
-#include "pmuEnterPage.h"
+#include "PmuEnterPage.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    pmuEnterPage w;
+    PmuEnterPage w;
     w.show();
 
     return a.exec();

@@ -14,19 +14,28 @@ TEMPLATE = app
 INCLUDEPATH += pmuIHM
 
 SOURCES += main.cpp\
-           pmuIHM/pmuEnterPage.cpp \
-    pmuIHM/pmuMainPage.cpp \
     pmuIHM/GuessULikeWidget.cpp \
     pmuIHM/HottipsWidget.cpp \
     pmuIHM/InstitutionWidget.cpp \
-    pmuIHM/PrivilegeWidget.cpp
+    pmuIHM/PrivilegeWidget.cpp \
+    pmuIHM/RegAndSignPage.cpp \
+    pmuIHM/PmuHomeTabPage.cpp \
+    pmuIHM/PmuMainPage.cpp \
+    pmuIHM/PmuEnterPage.cpp \
+    pmuIHM/SearchWidget.cpp \
+    pmuIHM/LanguageWidget.cpp
 
-HEADERS  += pmuIHM/pmuEnterPage.h \
-    pmuIHM/pmuMainPage.h \
+HEADERS  += \
     pmuIHM/GuessULikeWidget.h \
     pmuIHM/HottipsWidget.h \
     pmuIHM/InstitutionWidget.h \
-    pmuIHM/PrivilegeWidget.h
+    pmuIHM/PrivilegeWidget.h \
+    pmuIHM/RegAndSignPage.h \
+    pmuIHM/PmuHomeTabPage.h \
+    pmuIHM/PmuEnterPage.h \
+    pmuIHM/PmuMainPage.h \
+    pmuIHM/SearchWidget.h \
+    pmuIHM/LanguageWidget.h
 
 RESOURCES += \
     imageresources.qrc
