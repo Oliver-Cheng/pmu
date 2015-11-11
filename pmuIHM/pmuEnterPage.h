@@ -2,7 +2,6 @@
 #define PMUENTERPAGE_H
 
 #include <QWidget>
-#include <QWidget>
 #include <QVBoxLayout>
 #include <QPixmap>
 #include <QPalette>
@@ -18,24 +17,27 @@
 #include <QFont>
 #include <QComboBox>
 
-#include "pmuMainPage.h"
+#include "PmuHomeTabPage.h"
+#include "RegAndSignPage.h"
 
-
-class pmuEnterPage : public QWidget
+class PmuEnterPage : public QWidget
 {
     Q_OBJECT
 
 public:
-    pmuEnterPage(QWidget *parent = 0);
-    ~pmuEnterPage();
+    PmuEnterPage(QWidget *parent = 0);
+    ~PmuEnterPage();
     void initVariable();
     void constructIHM();
     void drawBackground();
     void setConnections();
-    void display();
 
 private:
-    pmuMainPage * mainPage;
+    int width;
+    int height;
+
+    PmuHomeTabPage * pmuHomeTabPage;
+    RegAndSignPage *regAndSignPage;
     QScreen *screen;
     QPixmap* pixmap;
     QFont *caracterStyle;
@@ -72,11 +74,8 @@ private:
     QPushButton *searchingButton;
     QPushButton *enterHomePageButton;
 
-    int width;
-    int height;
-
 private slots:
-    void signInHomePage();
+
 };
 
 #endif // PMUENTERPAGE_H
