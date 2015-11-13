@@ -18,23 +18,26 @@
 #include <QSpacerItem>
 #include <QMenu>
 #include <QMenuBar>
+#include <QFont>
 
 class RegAndSignPage : public QWidget
 {
     Q_OBJECT
 
 public:
-    RegAndSignPage(int width, int height);
+    RegAndSignPage(int width, int height, bool flag);
     ~RegAndSignPage();
 
     void initVariable();
     void constructIHM();
     void drawBackground();
     void setConnections();
+    void checkStates();
 
 private:
     int width;
     int height;
+    bool flag;
     QPixmap* pixmap;
 
     QFont *caracterStyle;

@@ -5,5 +5,9 @@
         <file>images/down.png</file>
         <file>images/searchButton1.png</file>
         <file>images/lala.png</file>
+        <file>images/back.png</file>
+        <file>images/labelBackground.png</file>
+        <file>images/background.png</file>
+        <file>images/boduo.png</file>
     </qresource>
 </RCC>
