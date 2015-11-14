@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.5.1, 2015-11-11T14:01:34. -->
+<!-- Written by QtCreator 3.5.1, 2015-11-13T09:56:07. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -249,7 +249,7 @@
   <valuemap type="QVariantMap">
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Android for armeabi (GCC 4.9, Qt 5.5.1)</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Android for armeabi (GCC 4.9, Qt 5.5.1)</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{d0d486b5-aed2-461a-b109-ae61cbf80d5d}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{adcead1f-30c6-4c7a-ad15-807da57f7a44}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>

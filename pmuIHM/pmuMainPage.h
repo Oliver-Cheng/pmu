@@ -39,13 +39,13 @@ public:
     void initial();
     void constructMainWidget();
     void setConnections();
+    void drawBackground();
 private:
     LanguageWidget *languageWidget;
 
     QPixmap* pixmap;
     QVBoxLayout* mainLayout;
     QHBoxLayout* listWidgetLayout;
-    QPalette palette;
 
     QFrame *titleBar;
     QHBoxLayout *searchingBarLayout;

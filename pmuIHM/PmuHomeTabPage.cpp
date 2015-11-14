@@ -1,19 +1,22 @@
 #include "PmuHomeTabPage.h"
 
-PmuHomeTabPage::PmuHomeTabPage(int width, int height) : QTabWidget()
+PmuHomeTabPage::PmuHomeTabPage(int width, int height, QFont *caracterStyle) : QTabWidget()
 {
     this->width = width;
     this->height = height;
+    this->caracterStyle = caracterStyle;
+
     this->initVariable();
     this->constructIHM();
     //this->setConnections();
+    //this->drawBackground();
 }
 
 void PmuHomeTabPage::initVariable(){
-    this->pmumainPage = new PmuMainPage(width,height);
+    this->pmumainPage = new PmuMainPage(width, height);
     this->neighborPage = new QWidget();
     this->selectionPage = new QWidget();
-    this->myOwnPage = new QWidget();
+    this->myOwnPage = new MyOwnPage(width, height);
 
     this->setStyleSheet("QTabWidget::pane {border-top: 2px solid #C2C7CB;position: absolute; top: -0.5em;}"
                         "QTabWidget::tab-bar { alignment: center;}"
@@ -31,5 +34,14 @@ void PmuHomeTabPage::constructIHM(){
     this->insertTab(2,this->selectionPage,"精選");
     this->insertTab(3,this->myOwnPage,"我的");
     this->setTabPosition(South);
+}
+
+void PmuHomeTabPage::drawBackground(){
+    pixmap = new QPixmap(":/images/background.png");
+    QPalette p =  this->palette();
+
+    p.setBrush(QPalette::Background, QBrush(pixmap->scaled(QSize(width, height), Qt::IgnoreAspectRatio, Qt::SmoothTransformation)));
+    this->setPalette(p);
+    this->setMask(pixmap->mask());
 }
 

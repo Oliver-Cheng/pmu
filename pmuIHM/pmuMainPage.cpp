@@ -8,6 +8,8 @@ PmuMainPage::PmuMainPage(int width, int height)
     this->initial();
     this->constructMainWidget();
     this->setConnections();
+    //this->drawBackground();
+    this->setStyleSheet("background-color:rgb(135,209,199)");
 }
 
 PmuMainPage::~PmuMainPage()
@@ -21,8 +23,6 @@ void PmuMainPage::initial(){
 }
 
 void PmuMainPage::constructMainWidget(){
-
-    this->setStyleSheet("background-color:rgb(135,209,199)");
 
     //! create seraching bar area
     cityLabel = new QLabel("城市 :");
@@ -145,7 +145,19 @@ void PmuMainPage::constructMainWidget(){
     mainLayout->addWidget(optionListWidget);
     mainLayout->addWidget(choosenTableWidget);
 }
+
+//!
+//! \brief PmuMainPage::setConnections
+//!
 void PmuMainPage::setConnections(){
 
     this->connect(this->optionListWidget,SIGNAL(clicked(QModelIndex)),languageWidget,SLOT(show()));
+}
+void PmuMainPage::drawBackground(){
+    pixmap = new QPixmap(":/images/background.png");
+    QPalette p =  this->palette();
+
+    p.setBrush(QPalette::Background, QBrush(pixmap->scaled(QSize(width, height), Qt::IgnoreAspectRatio, Qt::SmoothTransformation)));
+    this->setPalette(p);
+    this->setMask(pixmap->mask());
 }

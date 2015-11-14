@@ -23,7 +23,9 @@ SOURCES += main.cpp\
     pmuIHM/PmuMainPage.cpp \
     pmuIHM/PmuEnterPage.cpp \
     pmuIHM/SearchWidget.cpp \
-    pmuIHM/LanguageWidget.cpp
+    pmuIHM/LanguageWidget.cpp \
+    pmuIHM/CoursePublishPage.cpp \
+    pmuIHM/MyOwnPage.cpp
 
 HEADERS  += \
     pmuIHM/GuessULikeWidget.h \
@@ -35,7 +37,9 @@ HEADERS  += \
     pmuIHM/PmuEnterPage.h \
     pmuIHM/PmuMainPage.h \
     pmuIHM/SearchWidget.h \
-    pmuIHM/LanguageWidget.h
+    pmuIHM/LanguageWidget.h \
+    pmuIHM/CoursePublishPage.h \
+    pmuIHM/MyOwnPage.h
 
 RESOURCES += \
     imageresources.qrc
