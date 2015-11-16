@@ -9,7 +9,7 @@ PmuHomeTabPage::PmuHomeTabPage(int width, int height, QFont *caracterStyle) : QT
     this->initVariable();
     this->constructIHM();
     //this->setConnections();
-    //this->drawBackground();
+    this->drawBackground();
 }
 
 void PmuHomeTabPage::initVariable(){

@@ -9,8 +9,8 @@ CoursePublishPage::CoursePublishPage(int width, int height, QFont *caracterStyle
     this->initVariable();
     this->constructIHM();
     this->setConnections();
-    //this->drawBackground();
-    this->setStyleSheet("background-color:rgb(135,209,199)");
+    this->drawBackground();
+    //this->setStyleSheet("background-color:rgb(135,209,199)");
 }
 
 //!-----------------------------------------------------------------------------------------
