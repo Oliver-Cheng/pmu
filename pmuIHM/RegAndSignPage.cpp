@@ -11,8 +11,8 @@ RegAndSignPage::RegAndSignPage(int width, int height, bool flag)
     this->constructIHM();
     this->checkStates();
     this->setConnections();
-    //this->drawBackground();
-    this->setStyleSheet("background-color:rgb(135,209,199)");
+    this->drawBackground();
+    //this->setStyleSheet("background-color:rgb(135,209,199)");
 }
 
 //!-----------------------------------------------------------------------------------------
@@ -29,7 +29,9 @@ void RegAndSignPage::initVariable(){
 //!
 void RegAndSignPage::constructIHM(){
 
-    returnButton = new QPushButton("←");
+    returnButton = new QPushButton();
+    returnButton->setIcon(QIcon(":/images/return.png"));
+    returnButton->setIconSize(QSize(0.15*width,0.05*height));
     returnButton->setFixedWidth(0.15*width);
     returnButton->setStyleSheet("border: 0px;background-color:transparent; color: AliceBlue");
 
@@ -152,7 +154,7 @@ void RegAndSignPage::setConnections(){
 void RegAndSignPage::drawBackground(){
 
 
-    pixmap = new QPixmap(":/images/yuema.png");
+    pixmap = new QPixmap(":/images/background.png");
     QPalette p =  this->palette();
 
     p.setBrush(QPalette::Background, QBrush(pixmap->scaled(QSize(width, height), Qt::IgnoreAspectRatio, Qt::SmoothTransformation)));

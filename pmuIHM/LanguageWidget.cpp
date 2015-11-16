@@ -6,7 +6,7 @@ LanguageWidget::LanguageWidget(QWidget *parent): QWidget(parent){
     this->constructIHM();
     this->setConnections();
     this->setStyleSheet("background-color:rgb(135,209,199)");
-    // this->drawBackground();
+    this->drawBackground();
 }
 
 LanguageWidget::~LanguageWidget(){

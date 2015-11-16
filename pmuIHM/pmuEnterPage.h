@@ -59,6 +59,7 @@ private:
     QHBoxLayout *searchingLineEditLayout;
     QVBoxLayout *dialogLayout;
     QHBoxLayout *optionWidgetLayout;
+    QHBoxLayout *returnLayout;
 
     QFrame *searchingBar;
 
@@ -69,12 +70,14 @@ private:
     QWidget *centerPlantform;
     QWidget *enterHomePageWidget;
     QWidget *optionWidget;
+    //QWidget *returnWidget;
 
     QLineEdit *searchingLineEdit;
 
     QLabel *welcomLabel;
     QLabel *searchingLabel;
     QLabel *optionInfoLabel;
+    QLabel *orLabel;
 
     QPushButton *coursePublishButton;
     QPushButton *helpButton;

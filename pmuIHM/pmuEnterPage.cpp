@@ -6,8 +6,8 @@ PmuEnterPage::PmuEnterPage(QWidget *parent)
     this->initVariable();
     this->constructIHM();
     this->setConnections();
-    //this->drawBackground();
-    this->setStyleSheet("background-color:rgb(135,209,199)");
+    this->drawBackground();
+    //this->setStyleSheet("background-color:rgb(135,209,199)");
 }
 
 PmuEnterPage::~PmuEnterPage()
@@ -88,7 +88,7 @@ void PmuEnterPage::constructIHM(){
 
     this->searchingLineEdit = new QLineEdit();
     this->searchingLineEdit->setFixedHeight(height*0.053);
-    this->searchingLineEdit->setPlaceholderText("輸入學科、汾類");
+    this->searchingLineEdit->setPlaceholderText("輸入學科、分類");
     this->searchingLineEdit->setStyleSheet("QLineEdit { color:AliceBlue; border: 0px solid Gray; border-radius: 0px; color:rgb(0, 0, 0); background-color: azure; } "
                                            "QLineEdit:focus{border-style:outset; border-width:0px; border-radius: 0px; border-color: rgb(41, 237, 215); color:rgb(0, 0, 0); background-color: azure; } ");
 
@@ -196,36 +196,54 @@ void PmuEnterPage::showSignUpPage(){
 //!
 void PmuEnterPage::creatDialogWidget(){
 
-    this->optionInfoLabel = new QLabel("個 人  Or  機 構 ?");
-    //this->optionInfoLabel = new QLabel("請 問 您 是 以 個 人 還 是 機 構 的 名 義 發 布 課 程 ?");
-    this->optionInfoLabel->setStyleSheet("background-color:transparent; color: black");
-    this->optionInfoLabel->setFont(QFont("Segoe UI", 25, QFont::AnyStyle, false));
-    this->optionInfoLabel->adjustSize();
-    this->optionInfoLabel->setGeometry(QRect(328, 240, 329, 27*4));
-    this->optionInfoLabel->setWordWrap(true);
-    this->optionInfoLabel->setAlignment(Qt::AlignCenter);
 
-    this->individualButton = new QPushButton("個人");
-    this->individualButton->setStyleSheet("background-color:transparent; color:AliceBlue; border: 0px solid Gray;border-radius: 0px;padding: 08px;");
-    this->organizationButton = new QPushButton("機構");
-    this->organizationButton->setStyleSheet("background-color:transparent; color:AliceBlue; border: 0px solid Gray;border-radius: 0px;padding: 08px;");
-    this->cancelButton = new QPushButton("取消");
-    this->cancelButton->setStyleSheet("background-color:transparent; color:AliceBlue; border: 0px solid Gray;border-radius: 0px;padding: 08px;");
+    this->optionInfoLabel = new QLabel("請 問 您 是 ?");
+    this->optionInfoLabel->setFixedHeight(height*0.35*0.15);
+    this->optionInfoLabel->setStyleSheet("background-color:transparent; color:skyBlue; border: 0px solid Gray;border-radius: 0px;padding: 08px;");
+    this->optionInfoLabel->setFont(QFont("Segoe UI", 20, QFont::AnyStyle, false));
+    //this->optionInfoLabel->adjustSize();
+    //this->optionInfoLabel->setGeometry(QRect(328, 240, 329, 27*4));
+    //this->optionInfoLabel->setWordWrap(true);
+    this->optionInfoLabel->setAlignment(Qt::AlignLeft);
+
+    this->individualButton = new QPushButton("個  人");
+    this->individualButton->setFixedSize(width*0.75*0.5,height*0.35*0.4);
+    this->individualButton->setFont(QFont("Segoe UI", 25, QFont::AnyStyle, false));
+    this->individualButton->setStyleSheet("background-color:transparent; color:skyBlue; border: 0px solid Gray;border-radius: 0px;padding: 08px;");
+
+//    this->orLabel = new QLabel("OR");
+//    this->orLabel->setFont(QFont("Segoe UI", 25, QFont::AnyStyle, false));
+//    this->orLabel->setStyleSheet("background-color:transparent; color:skyBlue; border: 0px solid Gray;border-radius: 0px;padding: 08px;");
+    this->organizationButton = new QPushButton("機  構");
+    this->organizationButton->setFixedSize(width*0.75*0.5,height*0.35*0.4);
+    this->organizationButton->setFont(QFont("Segoe UI", 25, QFont::AnyStyle, false));
+    this->organizationButton->setStyleSheet("background-color:transparent; color:skyBlue; border: 0px solid Gray;border-radius: 0px;padding: 08px;");
+
     this->optionWidget = new QWidget();
-    this->optionWidget->setFixedHeight(height*0.35*0.20);
+    this->optionWidget->setFixedHeight(height*0.35*0.4);
     this->optionWidgetLayout = new QHBoxLayout(optionWidget);
     this->optionWidgetLayout->addWidget(individualButton);
+    //this->optionWidgetLayout->addWidget(orLabel);
     this->optionWidgetLayout->addWidget(organizationButton);
-    this->optionWidgetLayout->addWidget(cancelButton);
     this->optionWidgetLayout->setMargin(0);
     this->optionWidgetLayout->setSpacing(0);
+    //this->optionWidgetLayout->setAlignment(Qt::AlignCenter);
+
+    this->cancelButton = new QPushButton("取 消  ");
+    this->cancelButton->setStyleSheet("background-color:transparent; color:skyBlue; border: 0px solid Gray;border-radius: 0px;padding: 08px;");
+
+    this->returnLayout = new QHBoxLayout();
+    this->returnLayout->addStretch(0);
+    this->returnLayout->addWidget(cancelButton);
+    this->returnLayout->setAlignment(Qt::AlignRight);
 
     this->individualOrOrgDialog = new QDialog();
-    this->individualOrOrgDialog->setStyleSheet("background-color:rgb(51,196,216)");
+    this->individualOrOrgDialog->setStyleSheet("background-color:#F7F083");
     this->individualOrOrgDialog->setFixedSize(width*0.75,height*0.3);
     this->dialogLayout = new QVBoxLayout(individualOrOrgDialog);
     this->dialogLayout->addWidget(optionInfoLabel);
     this->dialogLayout->addWidget(optionWidget);
+    this->dialogLayout->addLayout(returnLayout);
     this->dialogLayout->setMargin(0);
     this->dialogLayout->setSpacing(0);
 }
