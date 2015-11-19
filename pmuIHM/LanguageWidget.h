@@ -36,18 +36,21 @@ public:
     void drawBackground();
     void constructIHM();
     void setConnections();
+    void adjustScrollBar(QScrollBar *scrollBar);
 private:
     QPixmap* pixmap;
 
     QScreen* screen;
 
     QFrame *tileBar;
-    QScrollArea *contentWidget;
+    //QScrollArea *contentWidget;
+    QWidget *contentWidget;
     QWidget *adsWidget;
     QWidget *contentInfoChWidget;
     QWidget *contentInfoEnWidget;
     QWidget *contentInfoFrWidget;
     QWidget *contentInfoGeWidget;
+
     QWidget *contentChineseWidget;
     QWidget *contentEnglishWidget;
     QWidget *contentFrenchWidget;
@@ -64,13 +67,14 @@ private:
     QHBoxLayout* englishWidgetLayout;
     QHBoxLayout* frenchWidgetLayout;
     QHBoxLayout* deutschWidgetLayout;
+
     QGridLayout* chineseGridLayout;
     QGridLayout* englishGridLayout;
     QGridLayout* frenchGridLayout;
     QGridLayout* deutschGridLayout;
 //    QGridLayout* testGridLayout;
 
-    QSpacerItem* tileBarSpacer;
+//    QSpacerItem* tileBarSpacer;
 
     QPushButton* tileBarReturnButton;
     QPushButton* tileBarSearchButton;
