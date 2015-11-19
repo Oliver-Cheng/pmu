@@ -42,7 +42,7 @@ private:
 
     QScreen* screen;
 
-    QFrame *tileBar;
+    QFrame *titleBar;
     //QScrollArea *contentWidget;
     QWidget *contentWidget;
     QWidget *adsWidget;
@@ -61,7 +61,7 @@ private:
 //    QListWidget *contentListWindow;
 
     QVBoxLayout* mainWidgetLayout;
-    QHBoxLayout* tileBarLayout;
+    QHBoxLayout* titleBarLayout;
     QVBoxLayout* contentWidgetLayout;
     QHBoxLayout* chineseWidgetLayout;
     QHBoxLayout* englishWidgetLayout;
@@ -76,8 +76,8 @@ private:
 
 //    QSpacerItem* tileBarSpacer;
 
-    QPushButton* tileBarReturnButton;
-    QPushButton* tileBarSearchButton;
+    QPushButton* titleBarReturnButton;
+    QPushButton* titleBarSearchButton;
     QPushButton* chineseGridButtonone;
     QPushButton* chineseGridButtontwo;
     QPushButton* chineseGridButtonthree;
@@ -105,7 +105,7 @@ private:
 
     QFont *caracterStyle;
 
-    QLabel* tileBarLabel;
+    QLabel* titleBarLabel;
     QLabel* chineseLabel;
     QLabel* englishLabel;
     QLabel* frenchLabel;
