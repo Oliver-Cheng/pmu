@@ -1,19 +1,17 @@
 #include "PmuEnterPage.h"
 
-PmuEnterPage::PmuEnterPage(QWidget *parent)
-    : QWidget(parent)
+PmuEnterPage::PmuEnterPage(ConnectToServer* connectToServer)
+    : QWidget()
 {
+    this->connectToServer = connectToServer;
+
     this->initVariable();
     this->constructIHM();
     this->setConnections();
     this->drawBackground();
-    //this->setStyleSheet("background-color:rgb(135,209,199)");
 }
 
-PmuEnterPage::~PmuEnterPage()
-{
-
-}
+PmuEnterPage::~PmuEnterPage(){}
 
 //!-----------------------------------------------------------------------------------------
 //!
@@ -25,6 +23,7 @@ void PmuEnterPage::initVariable(){
     this->height = screen->availableSize().height();
     this->width = screen->availableSize().width();
     this->caracterStyle = new QFont("Segoe UI", 15, QFont::AnyStyle, false);
+    this->regAndSignPage = new RegAndSignPage(width, height, flag);
     this->pmuHomeTabPage = new PmuHomeTabPage(width, height, caracterStyle);
     //this->regAndSignPage = new RegAndSignPage(width, height, flag);
     this->coursePublishPage = new CoursePublishPage(width, height, caracterStyle);
@@ -36,7 +35,7 @@ void PmuEnterPage::initVariable(){
 //!
 void PmuEnterPage::setConnections(){
     this->connect(this->enterHomePageButton, SIGNAL(clicked()), pmuHomeTabPage, SLOT(show()));
-    this->connect(this->signInButton, SIGNAL(clicked()), this, SLOT(showSignIpPage()));
+    this->connect(this->signInButton, SIGNAL(clicked()), this, SLOT(showSignInPage()));
     this->connect(this->signUpButton, SIGNAL(clicked()), this, SLOT(showSignUpPage()));
     this->connect(this->coursePublishButton, SIGNAL(clicked()),this,SLOT(showDialog()));
 }
@@ -174,9 +173,10 @@ void PmuEnterPage::drawBackground(){
 //!
 //! \brief PmuEnterPage::showSignIpPage
 //!
-void PmuEnterPage::showSignIpPage(){
-    this->flag = true;
-    this->regAndSignPage = new RegAndSignPage(width, height, flag);
+void PmuEnterPage::showSignInPage(){
+    //this->flag = true;
+    this->regAndSignPage->setState(false);
+    this->regAndSignPage->showSignUpInformation();
     this->regAndSignPage->show();
 }
 
@@ -185,8 +185,9 @@ void PmuEnterPage::showSignIpPage(){
 //! \brief PmuEnterPage::showSignUpPage
 //!
 void PmuEnterPage::showSignUpPage(){
-    this->flag = false;
-    this->regAndSignPage = new RegAndSignPage(width, height, flag);
+    //this->flag = false;
+    this->regAndSignPage->setState(true);
+    this->regAndSignPage->showSignUpInformation();
     this->regAndSignPage->show();
 }
 
@@ -195,8 +196,6 @@ void PmuEnterPage::showSignUpPage(){
 //! \brief PmuEnterPage::creatDialogWidget
 //!
 void PmuEnterPage::creatDialogWidget(){
-
-
     this->optionInfoLabel = new QLabel("請 問 您 是 ?");
     this->optionInfoLabel->setFixedHeight(height*0.35*0.15);
     this->optionInfoLabel->setStyleSheet("background-color:transparent; color:skyBlue; border: 0px solid Gray;border-radius: 0px;padding: 08px;");

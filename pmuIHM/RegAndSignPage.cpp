@@ -15,6 +15,13 @@ RegAndSignPage::RegAndSignPage(int width, int height, bool flag)
     //this->setStyleSheet("background-color:rgb(135,209,199)");
 }
 
+//!
+//! \brief RegAndSignPage::setState
+//!
+void RegAndSignPage::setState(bool flag){
+    this->flag = flag;
+}
+
 //!-----------------------------------------------------------------------------------------
 //!
 //! \brief RegAndSignPage::initVariable
@@ -180,7 +187,6 @@ void RegAndSignPage::checkStates(){
         mainWidgetName->setText("用郵箱註冊");
         loginButton->setText("註冊");
     }
-
 }
 
 //!-----------------------------------------------------------------------------------------
@@ -188,8 +194,7 @@ void RegAndSignPage::checkStates(){
 //! \brief RegAndSignPage::showSignUpInformation
 //!
 void RegAndSignPage::showSignUpInformation(){
-    if(confirmPasswordLineEdit->isHidden())
-        {
+    if(this->flag){
         confirmPasswordLineEdit->show();
         phoneNumberLineEdit->show();
         addressLineEdit->show();
@@ -198,9 +203,8 @@ void RegAndSignPage::showSignUpInformation(){
         mainWidgetName->setText("用郵箱註冊");
         loginButton->setText("註冊");
         this->flag = false;
-        }
-    else
-    {
+    }
+    else{
          confirmPasswordLineEdit->hide();
          phoneNumberLineEdit->hide();
          addressLineEdit->hide();
@@ -210,7 +214,6 @@ void RegAndSignPage::showSignUpInformation(){
          loginButton->setText("登錄");
          this->flag = true;
     }
-
 }
 
 RegAndSignPage::~RegAndSignPage()

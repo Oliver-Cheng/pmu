@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     pmuIHM/SearchWidget.cpp \
     pmuIHM/LanguageWidget.cpp \
     pmuIHM/CoursePublishPage.cpp \
-    pmuIHM/MyOwnPage.cpp
+    pmuIHM/MyOwnPage.cpp \
+    ConnectToServer.cpp
 
 HEADERS  += \
     pmuIHM/GuessULikeWidget.h \
@@ -39,7 +40,8 @@ HEADERS  += \
     pmuIHM/SearchWidget.h \
     pmuIHM/LanguageWidget.h \
     pmuIHM/CoursePublishPage.h \
-    pmuIHM/MyOwnPage.h
+    pmuIHM/MyOwnPage.h \
+    ConnectToServer.h
 
 RESOURCES += \
     imageresources.qrc

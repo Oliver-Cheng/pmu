@@ -21,13 +21,14 @@
 #include "PmuHomeTabPage.h"
 #include "RegAndSignPage.h"
 #include "CoursePublishPage.h"
+#include "ConnectToServer.h"
 
 class PmuEnterPage : public QWidget
 {
     Q_OBJECT
 
 public:
-    PmuEnterPage(QWidget *parent = 0);
+    PmuEnterPage(ConnectToServer* connectToServer);
     ~PmuEnterPage();
     void initVariable();
     void constructIHM();
@@ -36,6 +37,8 @@ public:
     void creatDialogWidget();
 
 private:
+    ConnectToServer* connectToServer;
+
     int width;
     int height;
     bool flag;
@@ -93,7 +96,7 @@ private:
 
 private slots:
     void showSignUpPage();
-    void showSignIpPage();
+    void showSignInPage();
     void showDialog();
     void showCoursePublishPage();
 };

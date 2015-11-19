@@ -33,6 +33,7 @@ public:
     void drawBackground();
     void setConnections();
     void checkStates();
+    void setState(bool flag);
 
 private:
     int width;
@@ -79,10 +80,8 @@ private:
     QSpacerItem *loginWindowRest;
 //    QWidget *loginButtonWindow;
 
-private slots:
+public slots:
     void showSignUpInformation();
-
-
 
 };
 
