@@ -275,7 +275,7 @@ void LanguageWidget::constructIHM(){
     contentWidgetScrollArea->setAutoFillBackground(true);
     contentWidgetScrollArea->setBackgroundRole(QPalette::Dark);
     contentWidgetScrollArea->setWidget(contentWidget);
-//    contentWidgetScrollArea->setContextMenuPolicy(Qt::);
+    
     //! advertisement area
     adsWidget = new QWidget();
     adsWidget->setStyleSheet("background-color:aliceblue;border: 0px");

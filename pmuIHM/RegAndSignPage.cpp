@@ -176,6 +176,9 @@ void RegAndSignPage::checkStates(){
         confirmPasswordLineEdit->show();
         phoneNumberLineEdit->show();
         addressLineEdit->show();
+        registrationButton->setText("登錄");
+        mainWidgetName->setText("用郵箱註冊");
+        loginButton->setText("註冊");
     }
 
 }
