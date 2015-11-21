@@ -23,10 +23,10 @@ SOURCES += main.cpp\
     pmuIHM/PmuMainPage.cpp \
     pmuIHM/PmuEnterPage.cpp \
     pmuIHM/SearchWidget.cpp \
-    pmuIHM/LanguageWidget.cpp \
     pmuIHM/CoursePublishPage.cpp \
     pmuIHM/MyOwnPage.cpp \
-    ConnectToServer.cpp
+    ConnectToServer.cpp \
+    pmuIHM/LanguageWidget.cpp
 
 HEADERS  += \
     pmuIHM/GuessULikeWidget.h \
