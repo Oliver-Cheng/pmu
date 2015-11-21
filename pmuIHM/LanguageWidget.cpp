@@ -245,14 +245,96 @@ void LanguageWidget::constructIHM(){
     deutschWidgetLayout->setSpacing(width *0.01);
     deutschWidgetLayout->setMargin(0);
     //!
+
+    japaneseLabel = new QLabel("日語");
+    japaneseLabel->setFont(QFont("Segoe UI" , 40, QFont::Normal, false));
+    japaneseLabel->setAlignment(Qt::AlignCenter);
+    japaneseLabel->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    japaneseLabel->setFixedWidth(0.3 * width);
+
+    japaneseGridButtonone = new QPushButton("杜月1");
+    japaneseGridButtonone->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    japaneseGridButtonone->setFont(*caracterStyle);
+    japaneseGridButtonone->setFixedSize(buttonWidth,buttonHeight);
+    japaneseGridButtontwo = new QPushButton("杜月2");
+    japaneseGridButtontwo->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    japaneseGridButtontwo->setFont(*caracterStyle);
+    japaneseGridButtontwo->setFixedSize(buttonWidth,buttonHeight);
+    japaneseGridButtonthree = new QPushButton("杜月3");
+    japaneseGridButtonthree->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    japaneseGridButtonthree->setFont(*caracterStyle);
+    japaneseGridButtonthree->setFixedSize(buttonWidth,buttonHeight);
+    japaneseGridButtonfour = new QPushButton("更多");
+    japaneseGridButtonfour->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    japaneseGridButtonfour->setFont(*caracterStyle);
+    japaneseGridButtonfour->setFixedSize(buttonWidth,buttonHeight);
+
+
+    contentInfoJaWidget = new QWidget();
+    contentInfoJaWidget->setFixedWidth(0.7 * width);
+    contentInfoJaWidget->setStyleSheet("background-color:transparent;");
+
+    japaneseGridLayout = new QGridLayout(contentInfoJaWidget);
+    japaneseGridLayout->addWidget(japaneseGridButtonone,0,0,1,1);
+    japaneseGridLayout->addWidget(japaneseGridButtontwo,0,1,1,1);
+    japaneseGridLayout->addWidget(japaneseGridButtonthree,1,0,1,1);
+    japaneseGridLayout->addWidget(japaneseGridButtonfour,1,1,1,1);
+    japaneseGridLayout->setHorizontalSpacing(width *0.02);
+    japaneseGridLayout->setVerticalSpacing(height*0.012);
+    japaneseGridLayout->setMargin(0);
+
     contentJapaneseWidget = new QWidget();
-    contentJapaneseWidget->setStyleSheet("background-color:yellow");
     contentJapaneseWidget->setFixedHeight(0.3 * 0.8 * height);
+    japaneseWidgetLayout = new QHBoxLayout(contentJapaneseWidget);
+    japaneseWidgetLayout->addWidget(japaneseLabel);
+    japaneseWidgetLayout->addWidget(contentInfoJaWidget);
+    japaneseWidgetLayout->setSpacing(width *0.01);
+    japaneseWidgetLayout->setMargin(0);
+
+    koreanLabel = new QLabel("韓語");
+    koreanLabel->setFont(QFont("Segoe UI" , 40, QFont::Normal, false));
+    koreanLabel->setAlignment(Qt::AlignCenter);
+    koreanLabel->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    koreanLabel->setFixedWidth(0.3 * width);
+
+    koreanGridButtonone = new QPushButton("杜月1");
+    koreanGridButtonone->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    koreanGridButtonone->setFont(*caracterStyle);
+    koreanGridButtonone->setFixedSize(buttonWidth,buttonHeight);
+    koreanGridButtontwo = new QPushButton("杜月2");
+    koreanGridButtontwo->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    koreanGridButtontwo->setFont(*caracterStyle);
+    koreanGridButtontwo->setFixedSize(buttonWidth,buttonHeight);
+    koreanGridButtonthree = new QPushButton("杜月3");
+    koreanGridButtonthree->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    koreanGridButtonthree->setFont(*caracterStyle);
+    koreanGridButtonthree->setFixedSize(buttonWidth,buttonHeight);
+    koreanGridButtonfour = new QPushButton("更多");
+    koreanGridButtonfour->setStyleSheet("background-color:aliceBlue;border: 0px;");
+    koreanGridButtonfour->setFont(*caracterStyle);
+    koreanGridButtonfour->setFixedSize(buttonWidth,buttonHeight);
+
+
+    contentInfoKoWidget = new QWidget();
+    contentInfoKoWidget->setFixedWidth(0.7 * width);
+    contentInfoKoWidget->setStyleSheet("background-color:transparent;");
+
+    koreanGridLayout = new QGridLayout(contentInfoKoWidget);
+    koreanGridLayout->addWidget(koreanGridButtonone,0,0,1,1);
+    koreanGridLayout->addWidget(koreanGridButtontwo,0,1,1,1);
+    koreanGridLayout->addWidget(koreanGridButtonthree,1,0,1,1);
+    koreanGridLayout->addWidget(koreanGridButtonfour,1,1,1,1);
+    koreanGridLayout->setHorizontalSpacing(width *0.02);
+    koreanGridLayout->setVerticalSpacing(height*0.012);
+    koreanGridLayout->setMargin(0);
 
     contentKoreanWidget = new QWidget();
-    contentKoreanWidget->setStyleSheet("background-color:yellow");
-    contentKoreanWidget->setFixedHeight(0.3 * 0.8  * height);
-
+    contentKoreanWidget->setFixedHeight(0.3 * 0.8 * height);
+    koreanWidgetLayout = new QHBoxLayout(contentKoreanWidget);
+    koreanWidgetLayout->addWidget(koreanLabel);
+    koreanWidgetLayout->addWidget(contentInfoKoWidget);
+    koreanWidgetLayout->setSpacing(width *0.01);
+    koreanWidgetLayout->setMargin(0);
 
     //!create content bar area
     contentWidget = new QWidget();

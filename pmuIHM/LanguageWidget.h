@@ -21,7 +21,6 @@
 #include <QListWidget>
 #include <QGridLayout>
 #include <QFont>
-
 #include "SearchWidget.h"
 
 class LanguageWidget : public QWidget
@@ -50,6 +49,8 @@ private:
     QWidget *contentInfoEnWidget;
     QWidget *contentInfoFrWidget;
     QWidget *contentInfoGeWidget;
+    QWidget *contentInfoJaWidget;
+    QWidget *contentInfoKoWidget;
 
     QWidget *contentChineseWidget;
     QWidget *contentEnglishWidget;
@@ -67,11 +68,15 @@ private:
     QHBoxLayout* englishWidgetLayout;
     QHBoxLayout* frenchWidgetLayout;
     QHBoxLayout* deutschWidgetLayout;
+    QHBoxLayout* japaneseWidgetLayout;
+    QHBoxLayout* koreanWidgetLayout;
 
     QGridLayout* chineseGridLayout;
     QGridLayout* englishGridLayout;
     QGridLayout* frenchGridLayout;
     QGridLayout* deutschGridLayout;
+    QGridLayout* japaneseGridLayout;
+    QGridLayout* koreanGridLayout;
 //    QGridLayout* testGridLayout;
 
 //    QSpacerItem* tileBarSpacer;
@@ -102,6 +107,18 @@ private:
     QPushButton* deutschGridButtonfour;
     QPushButton* deutschGridButtonfive;
     QPushButton* deutschGridButtonsix;
+    QPushButton* japaneseGridButtonone;
+    QPushButton* japaneseGridButtontwo;
+    QPushButton* japaneseGridButtonthree;
+    QPushButton* japaneseGridButtonfour;
+    QPushButton* japaneseGridButtonfive;
+    QPushButton* japaneseGridButtonsix;
+    QPushButton* koreanGridButtonone;
+    QPushButton* koreanGridButtontwo;
+    QPushButton* koreanGridButtonthree;
+    QPushButton* koreanGridButtonfour;
+    QPushButton* koreanGridButtonfive;
+    QPushButton* koreanGridButtonsix;
 
     QFont *caracterStyle;
 
@@ -110,6 +127,8 @@ private:
     QLabel* englishLabel;
     QLabel* frenchLabel;
     QLabel* deutchLabel;
+    QLabel* japaneseLabel;
+    QLabel* koreanLabel;
 
     QScrollArea* contentWidgetScrollArea;
 
@@ -119,13 +138,11 @@ private:
     int buttonWidth;
     int buttonHeight;
 
-
-
 signals:
-
 
 public slots:
     void signSearchPage();
+
 };
 
 #endif // WIDGET_H
